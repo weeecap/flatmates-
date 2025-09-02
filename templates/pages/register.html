@@ -1,0 +1,200 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Регистрация - Flatmates Hub{% endblock %}
+
+{% block extra_css %}
+<style>
+.register-container {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.register-card {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    overflow: hidden;
+    width: 100%;
+    max-width: 450px;
+}
+
+.register-header {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.register-body {
+    padding: 2rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-label {
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+.form-control {
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: #4facfe;
+    box-shadow: 0 0 0 0.2rem rgba(79, 172, 254, 0.25);
+}
+
+.btn-register {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    border: none;
+    border-radius: 8px;
+    padding: 0.75rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-register:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(79, 172, 254, 0.4);
+}
+
+.login-link {
+    color: #4facfe;
+    text-decoration: none;
+}
+
+.login-link:hover {
+    text-decoration: underline;
+}
+
+.error-list {
+    color: #dc3545;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+}
+
+.password-requirements {
+    font-size: 0.75rem;
+    color: #6c757d;
+    margin-top: 0.25rem;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="register-container">
+    <div class="register-card">
+        <div class="register-header">
+            <h2 class="mb-0">Создайте аккаунт</h2>
+            <p class="mb-0">Присоединяйтесь к Flatmates Hub</p>
+        </div>
+        
+        <div class="register-body">
+            {% if messages %}
+            <div class="alert alert-info">
+                {% for message in messages %}
+                <div class="alert-{{ message.tags }}">
+                    {{ message }}
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            <form method="post" novalidate>
+                {% csrf_token %}
+                
+                <!-- Имя -->
+                <div class="form-group">
+                    <label for="id_first_name" class="form-label">Имя *</label>
+                    {{ form.first_name }}
+                    {% if form.first_name.errors %}
+                    <div class="error-list">
+                        {{ form.first_name.errors }}
+                    </div>
+                    {% endif %}
+                </div>
+
+                <!-- Фамилия -->
+                <div class="form-group">
+                    <label for="id_last_name" class="form-label">Фамилия *</label>
+                    {{ form.last_name }}
+                    {% if form.last_name.errors %}
+                    <div class="error-list">
+                        {{ form.last_name.errors }}
+                    </div>
+                    {% endif %}
+                </div>
+
+                <!-- Email -->
+                <div class="form-group">
+                    <label for="id_email" class="form-label">Email *</label>
+                    {{ form.email }}
+                    {% if form.email.errors %}
+                    <div class="error-list">
+                        {{ form.email.errors }}
+                    </div>
+                    {% endif %}
+                </div>
+
+                <!-- Логин -->
+                <div class="form-group">
+                    <label for="id_username" class="form-label">Логин *</label>
+                    {{ form.username }}
+                    {% if form.username.errors %}
+                    <div class="error-list">
+                        {{ form.username.errors }}
+                    </div>
+                    {% endif %}
+                </div>
+
+                <!-- Пароль -->
+                <div class="form-group">
+                    <label for="id_password1" class="form-label">Пароль *</label>
+                    {{ form.password1 }}
+                    <div class="password-requirements">
+                        Пароль должен содержать не менее 8 символов, включать буквы и цифры.
+                    </div>
+                    {% if form.password1.errors %}
+                    <div class="error-list">
+                        {{ form.password1.errors }}
+                    </div>
+                    {% endif %}
+                </div>
+
+                <!-- Подтверждение пароля -->
+                <div class="form-group">
+                    <label for="id_password2" class="form-label">Подтверждение пароля *</label>
+                    {{ form.password2 }}
+                    {% if form.password2.errors %}
+                    <div class="error-list">
+                        {{ form.password2.errors }}
+                    </div>
+                    {% endif %}
+                </div>
+
+                <button type="submit" class="btn btn-register w-100 mb-3">
+                    Создать аккаунт
+                </button>
+
+                <div class="text-center">
+                    <small class="text-muted">
+                        Уже есть аккаунт? 
+                        <a href="{% url 'login' %}" class="login-link">Войти</a>
+                    </small>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

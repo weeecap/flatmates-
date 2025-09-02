@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Главная - Flatmates Hub{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section bg-gradient-primary text-white py-5 mb-5 rounded-3">
+    <div class="container text-center">
+        <h1 class="display-4 fw-bold mb-4">Управляйте домашним хозяйством вместе</h1>
+        <p class="lead mb-4">Простые решения для общих обязанностей, финансов и событий</p>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+            <a>
+                Начать бесплатно 
+            </a>
+            <a>
+                Войти 
+            </a>
+        </div>
+        <a>
+            Перейти в дашборд 
+        </a>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section id="features" class="py-5">
+    <div class="container">
+        <h2 class="text-center mb-5">Что мы предлагаем</h2>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center">
+                        <i class="bi bi-list-check display-4 text-primary mb-3"></i>
+                        <h5 class="card-title">Общие обязанности</h5>
+                        <p class="card-text">Распределяйте задачи по уборке, покупкам и другим делам</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center">
+                        <i class="bi bi-cash-coin display-4 text-success mb-3"></i>
+                        <h5 class="card-title">Учет финансов</h5>
+                        <p class="card-text">Отслеживайте общие расходы и долги</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center">
+                        <i class="bi bi-calendar-event display-4 text-warning mb-3"></i>
+                        <h5 class="card-title">Совместные события</h5>
+                        <p class="card-text">Организуйте вечеринки и встречи</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+.hero-section {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+.bg-gradient-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+</style>
+{% endblock %}
