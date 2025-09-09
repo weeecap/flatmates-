@@ -113,32 +113,25 @@
 
             <form method="post" novalidate>
                 {% csrf_token %}
-                
-                <!-- Имя -->
-                <div class="form-group">
-                    <label for="id_first_name" class="form-label">Имя *</label>
-                    {{ form.first_name }}
-                    {% if form.first_name.errors %}
-                    <div class="error-list">
-                        {{ form.first_name.errors }}
-                    </div>
-                    {% endif %}
-                </div>
 
-                <!-- Фамилия -->
+                <!-- username  -->
                 <div class="form-group">
-                    <label for="id_last_name" class="form-label">Фамилия *</label>
+                    <label for="id_username" class="form-label">Имя пользователя *</label> <br>
+                    <input type='text' name='username' clas="form-control"
+                            id='id_username' required>
                     {{ form.last_name }}
                     {% if form.last_name.errors %}
-                    <div class="error-list">
+                    <div>class="error-list">
                         {{ form.last_name.errors }}
                     </div>
                     {% endif %}
                 </div>
 
-                <!-- Email -->
+                <!-- email -->
                 <div class="form-group">
-                    <label for="id_email" class="form-label">Email *</label>
+                    <label for="id_email" class="form-label">Email *</label> <br>
+                    <input type='email' name='email' clas="form-control"
+                            id='id_email' required> 
                     {{ form.email }}
                     {% if form.email.errors %}
                     <div class="error-list">
@@ -147,21 +140,12 @@
                     {% endif %}
                 </div>
 
-                <!-- Логин -->
+                <!-- password -->
                 <div class="form-group">
-                    <label for="id_username" class="form-label">Логин *</label>
-                    {{ form.username }}
-                    {% if form.username.errors %}
-                    <div class="error-list">
-                        {{ form.username.errors }}
-                    </div>
-                    {% endif %}
-                </div>
-
-                <!-- Пароль -->
-                <div class="form-group">
-                    <label for="id_password1" class="form-label">Пароль *</label>
+                    <label for="id_password1" class="form-label">Пароль *</label> <br>
                     {{ form.password1 }}
+                    <input type='password' name="'email" clas="form-control"
+                            id='id_password' required> 
                     <div class="password-requirements">
                         Пароль должен содержать не менее 8 символов, включать буквы и цифры.
                     </div>
@@ -172,9 +156,11 @@
                     {% endif %}
                 </div>
 
-                <!-- Подтверждение пароля -->
+                <!-- password check-->
                 <div class="form-group">
-                    <label for="id_password2" class="form-label">Подтверждение пароля *</label>
+                    <label for="id_password2" class="form-label">Подтверждение пароля *</label><br>
+                    <input type='password' name="'email" clas="form-control"
+                            id='id_password' required> 
                     {{ form.password2 }}
                     {% if form.password2.errors %}
                     <div class="error-list">
