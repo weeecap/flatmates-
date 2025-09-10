@@ -5,13 +5,7 @@ def index(request):
         'title': 'Flatmates Hub',
         'message': 'Добро пожаловать!'
     }
-    return render(request, 'pages/index.html', context)
-
-def login(request):
-    return render(request, 'pages/login.html')
-
-def register(request):
-    return render(request, 'pages/register.html')
+    return render(request, 'core/pages/index.html', context)
 
 def dashboard(request):
-    return render(request, 'pages/dashboard.html')
+    return render(request, 'core/pages/dashboard.html')

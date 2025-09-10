@@ -1,0 +1,51 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+    <div class="container">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
+                data-bs-target="#mainNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="mainNavbar">
+            <ul class="navbar-nav me-auto">
+                {% if users.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'dashboard' %}">
+                            <i class="bi bi-speedometer2 me-1"></i>Дашборд
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="bi bi-list-check me-1"></i>Обязанности
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="bi bi-cash-coin me-1"></i>Финансы
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="bi bi-calendar-event me-1"></i>События
+                        </a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'index' %}">
+                            <i class="bi bi-house me-1"></i>Главная
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#features">
+                            <i class="bi bi-star me-1"></i>Возможности
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">
+                            <i class="bi bi-info-circle me-1"></i>О проекте
+                        </a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>

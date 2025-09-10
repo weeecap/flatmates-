@@ -1,14 +1,11 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
 
 
 
-class Profile(models.Model):
-    username = models.CharField(max_length=50, blank=True, null=False)
-    telegram = models.CharField(max_length=120, blank=True, null=True)
-    gender = models.CharField(max_length=20, blank=True, null=True)
-    
-    def __str__(self):
-        return self.username
+class User(AbstractUser):
+    image = models.ImageField(upload_to='users_image', null=False, blank=True)
+    tg = models.CharField(max_length=30,null=False,blank=True)
 
 
-# Create your models here.
+

@@ -1,0 +1,589 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}Главная - Flatmates Hub{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section position-relative overflow-hidden">
+  <div class="container py-5">
+    <div class="row align-items-center min-vh-75 py-5">
+      <div class="col-lg-6 mb-5 mb-lg-0">
+        <div class="badge bg-orange-soft text-orange rounded-pill px-3 py-2 mb-3">
+          <i class="bi bi-house-heart me-1"></i> Умное совместное проживание
+        </div>
+        <h1 class="display-3 fw-bold mb-4 text-dark">Дом, где всё <span class="text-primary">организовано</span></h1>
+        <p class="lead mb-4 text-dark">Платформа для соседей по квартире, которая упрощает общие задачи, финансы и мероприятия. Создана для гармонии в вашем доме.</p>
+        <div class="d-flex flex-wrap gap-3 mb-4">
+          <a href="{% url 'users:registration' %}" class="btn btn-primary btn-lg px-4 py-3 rounded-3 shadow-sm">
+            Попробовать бесплатно <i class="bi bi-arrow-right ms-2"></i>
+          </a>
+          <a href="#demo" class="btn btn-outline-dark btn-lg px-4 py-3 rounded-3">
+            <i class="bi bi-play-circle me-2"></i>Смотреть демо
+          </a>
+        </div>
+        <div class="d-flex align-items-center text-muted">
+          <div class="d-flex me-3">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=32&q=80" class="rounded-circle border border-3 border-white shadow-sm" width="32" height="32" alt="User">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=32&q=80" class="rounded-circle border border-3 border-white shadow-sm ms-n2" width="32" height="32" alt="User">
+            <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-4.0.3&auto=format&fit=crop&w=32&q=80" class="rounded-circle border border-3 border-white shadow-sm ms-n2" width="32" height="32" alt="User">
+          </div>
+          <span>Более <strong>10,000</strong> счастливых соседей</span>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="hero-dashboard position-relative">
+          <div class="card hero-card-1 shadow-lg rounded-4 position-absolute top-0 start-0">
+            <div class="card-body p-3">
+              <div class="d-flex align-items-center">
+                <div class="bg-success bg-opacity-10 p-2 rounded-3 me-2">
+                  <i class="bi bi-check-lg text-success fs-5"></i>
+                </div>
+                <div>
+                  <div class="fw-bold">Уборка завершена</div>
+                  <small class="text-muted">Анна, сегодня</small>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="card hero-card-2 shadow-lg rounded-4 position-absolute top-50 end-0">
+            <div class="card-body p-3">
+              <div class="d-flex align-items-center">
+                <div class="bg-primary bg-opacity-10 p-2 rounded-3 me-2">
+                  <i class="bi bi-currency-ruble text-primary fs-5"></i>
+                </div>
+                <div>
+                  <div class="fw-bold">Коммунальные оплачены</div>
+                  <small class="text-muted">Максим, 2 дня назад</small>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="card hero-card-3 shadow-lg rounded-4 position-absolute bottom-0 start-50">
+            <div class="card-body p-3">
+              <div class="d-flex align-items-center">
+                <div class="bg-orange bg-opacity-10 p-2 rounded-3 me-2">
+                  <i class="bi bi-calendar-event text-orange fs-5"></i>
+                </div>
+                <div>
+                  <div class="fw-bold">Вечеринка в субботу</div>
+                  <small class="text-muted">6 участников</small>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <img src="https://images.unsplash.com/photo-1559028012-481c04fa702d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+               alt="Интерфейс Flatmates Hub" class="img-fluid rounded-4 shadow-lg">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-waves">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+      <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" class="shape-fill"></path>
+    </svg>
+  </div>
+</section>
+
+<!-- Features Section -->
+<section id="features" class="py-5 bg-light-soft">
+  <div class="container py-5">
+    <div class="text-center mb-5">
+      <h2 class="display-5 fw-bold mb-3">Все необходимое для комфортного проживания</h2>
+      <p class="lead text-muted">Инструменты, которые превращают совместное жилье в удовольствие</p>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-4">
+        <div class="card h-100 border-0 shadow-sm feature-card">
+          <div class="card-body p-4">
+            <div class="feature-icon bg-primary-soft rounded-3 d-inline-flex align-items-center justify-content-center mb-4">
+              <i class="bi bi-list-check display-5 text-primary"></i>
+            </div>
+            <h5 class="card-title fw-bold">Общие обязанности</h5>
+            <p class="card-text text-muted">Распределяйте задачи по уборке, покупкам и другим делам. Назначайте ответственных и отслеживайте выполнение.</p>
+            <ul class="list-unstyled text-muted">
+              <li class="mb-1"><i class="bi bi-check-circle-fill text-success me-2"></i> Ротация обязанностей</li>
+              <li class="mb-1"><i class="bi bi-check-circle-fill text-success me-2"></i> Уведомления о дедлайнах</li>
+              <li class="mb-1"><i class="bi bi-check-circle-fill text-success me-2"></i> История выполненных задач</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="card h-100 border-0 shadow-sm feature-card">
+          <div class="card-body p-4">
+            <div class="feature-icon bg-success-soft rounded-3 d-inline-flex align-items-center justify-content-center mb-4">
+              <i class="bi bi-cash-coin display-5 text-success"></i>
+            </div>
+            <h5 class="card-title fw-bold">Учет финансов</h5>
+            <p class="card-text text-muted">Отслеживайте общие расходы и долги. Автоматически рассчитывайте, кто кому должен, и упрощайте расчеты.</p>
+            <ul class="list-unstyled text-muted">
+              <li class="mb-1"><i class="bi bi-check-circle-fill text-success me-2"></i> Общий бюджет</li>
+              <li class="mb-1"><i class="bi bi-check-circle-fill text-success me-2"></i> Разделение счетов</li>
+              <li class="mb-1"><i class="bi bi-check-circle-fill text-success me-2"></i> Напоминания о платежах</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="card h-100 border-0 shadow-sm feature-card">
+          <div class="card-body p-4">
+            <div class="feature-icon bg-orange-soft rounded-3 d-inline-flex align-items-center justify-content-center mb-4">
+              <i class="bi bi-calendar-event display-5 text-orange"></i>
+            </div>
+            <h5 class="card-title fw-bold">Совместные события</h5>
+            <p class="card-text text-muted">Организуйте вечеринки и встречи. Создавайте события, приглашайте соседей и отслеживайте подтверждения.</p>
+            <ul class="list-unstyled text-muted">
+              <li class="mb-1"><i class="bi bi-check-circle-fill text-success me-2"></i> Общий календарь</li>
+              <li class="mb-1"><i class="bi bi-check-circle-fill text-success me-2"></i> Опросы для выбора дат</li>
+              <li class="mb-1"><i class="bi bi-check-circle-fill text-success me-2"></i> Списки покупок</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="card h-100 border-0 shadow-sm feature-card">
+          <div class="card-body p-4">
+            <div class="feature-icon bg-purple-soft rounded-3 d-inline-flex align-items-center justify-content-center mb-4">
+              <i class="bi bi-chat-dots display-5 text-purple"></i>
+            </div>
+            <h5 class="card-title fw-bold">Встроенный чат</h5>
+            <p class="card-text text-muted">Общайтесь без необходимости переключаться на другие мессенджеры. Обсуждайте бытовые вопросы в тематических комнатах.</p>
+            <ul class="list-unstyled text-muted">
+              <li class="mb-1"><i class="bi bi-check-circle-fill text-success me-2"></i> Тематические комнаты</li>
+              <li class="mb-1"><i class="bi bi-check-circle-fill text-success me-2"></i> Напоминания в чате</li>
+              <li class="mb-1"><i class="bi bi-check-circle-fill text-success me-2"></i> React-реакции</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="card h-100 border-0 shadow-sm feature-card">
+          <div class="card-body p-4">
+            <div class="feature-icon bg-pink-soft rounded-3 d-inline-flex align-items-center justify-content-center mb-4">
+              <i class="bi bi-file-text display-5 text-pink"></i>
+            </div>
+            <h5 class="card-title fw-bold">Документы и квитанции</h5>
+            <p class="card-text text-muted">Храните важные документы и квитанции в одном месте с доступом для всех соседей.</p>
+            <ul class="list-unstyled text-muted">
+              <li class="mb-1"><i class="bi bi-check-circle-fill text-success me-2"></i> Общее хранилище</li>
+              <li class="mb-1"><i class="bi bi-check-circle-fill text-success me-2"></i> Напоминания об оплате</li>
+              <li class="mb-1"><i class="bi bi-check-circle-fill text-success me-2"></i> Сканы квитанций</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="card h-100 border-0 shadow-sm feature-card">
+          <div class="card-body p-4">
+            <div class="feature-icon bg-info-soft rounded-3 d-inline-flex align-items-center justify-content-center mb-4">
+              <i class="bi bi-shield-check display-5 text-info"></i>
+            </div>
+            <h5 class="card-title fw-bold">Безопасность и конфиденциальность</h5>
+            <p class="card-text text-muted">Ваши данные в безопасности. Мы используем современные методы шифрования и защиты.</p>
+            <ul class="list-unstyled text-muted">
+              <li class="mb-1"><i class="bi bi-check-circle-fill text-success me-2"></i> Шифрование данных</li>
+              <li class="mb-1"><i class="bi bi-check-circle-fill text-success me-2"></i> Контроль доступа</li>
+              <li class="mb-1"><i class="bi bi-check-circle-fill text-success me-2"></i> Резервное копирование</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- How it works Section -->
+<section class="py-5">
+  <div class="container py-5">
+    <div class="row align-items-center">
+      <div class="col-lg-6 mb-5 mb-lg-0">
+        <h2 class="display-5 fw-bold mb-4">Начните использовать за 5 минут</h2>
+        <p class="lead text-muted mb-4">Простая настройка и интуитивно понятный интерфейс позволят вам быстро начать пользоваться всеми преимуществами Flatmates Hub.</p>
+        
+        <div class="d-flex mb-4">
+          <div class="me-4">
+            <div class="bg-primary-soft rounded-circle d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
+              <span class="text-primary fw-bold fs-5">1</span>
+            </div>
+          </div>
+          <div>
+            <h5 class="fw-bold">Создайте аккаунт</h5>
+            <p class="text-muted mb-0">Зарегистрируйтесь с помощью email или социальных сетей</p>
+          </div>
+        </div>
+        
+        <div class="d-flex mb-4">
+          <div class="me-4">
+            <div class="bg-primary-soft rounded-circle d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
+              <span class="text-primary fw-bold fs-5">2</span>
+            </div>
+          </div>
+          <div>
+            <h5 class="fw-bold">Пригласите соседей</h5>
+            <p class="text-muted mb-0">Отправьте приглашения по email или с помощью ссылки</p>
+          </div>
+        </div>
+        
+        <div class="d-flex">
+          <div class="me-4">
+            <div class="bg-primary-soft rounded-circle d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
+              <span class="text-primary fw-bold fs-5">3</span>
+            </div>
+          </div>
+          <div>
+            <h5 class="fw-bold">Настройте процессы</h5>
+            <p class="text-muted mb-0">Добавьте регулярные задачи, расходы и события</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="ratio ratio-16x9 shadow-lg rounded-4 overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+               alt="Как работает Flatmates Hub" class="img-fluid">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials Section -->
+<section class="py-5 bg-light-soft">
+  <div class="container py-5">
+    <div class="text-center mb-5">
+      <h2 class="display-5 fw-bold mb-3">Что говорят наши пользователи</h2>
+      <p class="lead text-muted">Присоединяйтесь к тысячам счастливых соседей по всей стране</p>
+    </div>
+    
+    <div class="row">
+      <div class="col-md-6 col-lg-4 mb-4">
+        <div class="card border-0 shadow-sm h-100">
+          <div class="card-body p-4">
+            <div class="d-flex mb-4">
+              <i class="bi bi-star-fill text-warning me-1"></i>
+              <i class="bi bi-star-fill text-warning me-1"></i>
+              <i class="bi bi-star-fill text-warning me-1"></i>
+              <i class="bi bi-star-fill text-warning me-1"></i>
+              <i class="bi bi-star-fill text-warning"></i>
+            </div>
+            <p class="card-text fst-italic mb-4">"С Flatmates Hub мы наконец-то перестали спорить о том, кто должен выносить мусор. Теперь все делается вовремя и без напоминаний!"</p>
+            <div class="d-flex align-items-center">
+              <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" 
+                   alt="Анна" class="rounded-circle me-3" width="50" height="50">
+              <div>
+                <h6 class="mb-0">Анна, Москва</h6>
+                <small class="text-muted">Живет с 3 соседями</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-6 col-lg-4 mb-4">
+        <div class="card border-0 shadow-sm h-100">
+          <div class="card-body p-4">
+            <div class="d-flex mb-4">
+              <i class="bi bi-star-fill text-warning me-1"></i>
+              <i class="bi bi-star-fill text-warning me-1"></i>
+              <i class="bi bi-star-fill text-warning me-1"></i>
+              <i class="bi bi-star-fill text-warning me-1"></i>
+              <i class="bi bi-star-fill text-warning"></i>
+            </div>
+            <p class="card-text fst-italic mb-4">"Учет общих расходов стал таким простым! Больше не нужно запоминать, кто за что платил. Приложение все подсчитывает автоматически."</p>
+            <div class="d-flex align-items-center">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" 
+                   alt="Максим" class="rounded-circle me-3" width="50" height="50">
+              <div>
+                <h6 class="mb-0">Максим, Санкт-Петербург</h6>
+                <small class="text-muted">Живет с 2 соседями</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-6 col-lg-4 mb-4">
+        <div class="card border-0 shadow-sm h-100">
+          <div class="card-body p-4">
+            <div class="d-flex mb-4">
+              <i class="bi bi-star-fill text-warning me-1"></i>
+              <i class="bi bi-star-fill text-warning me-1"></i>
+              <i class="bi bi-star-fill text-warning me-1"></i>
+              <i class="bi bi-star-fill text-warning me-1"></i>
+              <i class="bi bi-star-half text-warning"></i>
+            </div>
+            <p class="card-text fst-italic mb-4">"Организация совместных мероприятий теперь занимает минуты вместо часов переписки в чате. Рекомендую всем, кто живет с соседями!"</p>
+            <div class="d-flex align-items-center">
+              <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" 
+                   alt="Ольга" class="rounded-circle me-3" width="50" height="50">
+              <div>
+                <h6 class="mb-0">Ольга, Казань</h6>
+                <small class="text-muted">Живет с 4 соседями</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<section class="py-5 bg-primary-gradient text-white">
+  <div class="container py-5">
+    <div class="row justify-content-center text-center">
+      <div class="col-lg-8">
+        <h2 class="display-5 fw-bold mb-4">Готовы навести порядок в вашем доме?</h2>
+        <p class="lead mb-5">Присоединяйтесь к сообществу организованных соседей. Начните использовать Flatmates Hub бесплатно уже сегодня.</p>
+        <a href="{% url 'users:registration' %}" class="btn btn-light btn-lg px-5 py-3 rounded-3 shadow-sm me-3">
+          Начать бесплатно <i class="bi bi-arrow-right ms-2"></i>
+        </a>
+        <a href="#features" class="btn btn-outline-light btn-lg px-5 py-3 rounded-3 scroll-to">
+          Узнать больше
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+:root {
+  --primary: #4361ee;
+  --primary-soft: #eef2ff;
+  --secondary: #6c757d;
+  --success: #198754;
+  --success-soft: #d1e7dd;
+  --orange: #fd7e14;
+  --orange-soft: #ffe5d0;
+  --purple: #6f42c1;
+  --purple-soft: #e9deff;
+  --pink: #d63384;
+  --pink-soft: #fcddec;
+  --info: #0dcaf0;
+  --info-soft: #cff4fc;
+  --light-soft: #f8f9fa;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+.hero-section {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  color: #212529;
+  position: relative;
+}
+
+.min-vh-75 {
+  min-height: 75vh;
+}
+
+.hero-dashboard {
+  position: relative;
+  min-height: 300px;
+}
+
+.hero-card-1, .hero-card-2, .hero-card-3 {
+  animation: float 6s ease-in-out infinite;
+  z-index: 10;
+  width: max-content;
+  max-width: 220px;
+  border: none;
+}
+
+.hero-card-2 {
+  animation-delay: 2s;
+}
+
+.hero-card-3 {
+  animation-delay: 4s;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0px); }
+}
+
+.hero-waves {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+}
+
+.hero-waves svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 70px;
+}
+
+.hero-waves .shape-fill {
+  fill: #FFFFFF;
+}
+
+.feature-icon {
+  width: 80px;
+  height: 80px;
+}
+
+.feature-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 12px;
+}
+
+.feature-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.1) !important;
+}
+
+.bg-primary-soft {
+  background-color: var(--primary-soft);
+}
+
+.bg-success-soft {
+  background-color: var(--success-soft);
+}
+
+.bg-orange-soft {
+  background-color: var(--orange-soft);
+}
+
+.bg-purple-soft {
+  background-color: var(--purple-soft);
+}
+
+.bg-pink-soft {
+  background-color: var(--pink-soft);
+}
+
+.bg-info-soft {
+  background-color: var(--info-soft);
+}
+
+.bg-light-soft {
+  background-color: var(--light-soft);
+}
+
+.text-orange {
+  color: var(--orange);
+}
+
+.text-purple {
+  color: var(--purple);
+}
+
+.text-pink {
+  color: var(--pink);
+}
+
+.bg-orange {
+  background-color: var(--orange);
+}
+
+.bg-primary-gradient {
+  background: linear-gradient(135deg, var(--primary) 0%, #3a56d4 100%);
+}
+
+.rounded-3 {
+  border-radius: 12px !important;
+}
+
+.rounded-4 {
+  border-radius: 16px !important;
+}
+
+.btn {
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+
+.btn-primary:hover {
+  background-color: #3a56d4;
+  border-color: #3a56d4;
+  transform: translateY(-2px);
+}
+
+.btn-outline-dark:hover {
+  transform: translateY(-2px);
+}
+
+.display-3 {
+  font-weight: 800;
+}
+
+.display-5 {
+  font-weight: 700;
+}
+
+.lead {
+  font-weight: 400;
+}
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Плавная прокрутка к секциям
+  document.querySelectorAll('.scroll-to').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    });
+  });
+  
+  // Анимация появления элементов при прокрутке
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = 1;
+        entry.target.style.transform = 'translateY(0)';
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+  
+  // Анимируем карточки с функциями
+  document.querySelectorAll('.feature-card').forEach(card => {
+    card.style.opacity = 0;
+    card.style.transform = 'translateY(20px)';
+    card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(card);
+  });
+  
+  // Анимируем карточки с отзывами
+  document.querySelectorAll('.card').forEach(card => {
+    card.style.opacity = 0;
+    card.style.transform = 'translateY(20px)';
+    card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(card);
+  });
+});
+</script>
+{% endblock %}
