@@ -134,7 +134,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'users.User'
 
-print("Template directories search order:")
-for template_dir in ['core/templates']:
-    path = BASE_DIR / template_dir
-    print(f"- {path}: {os.path.exists(path)}")
+LOGIN_URL = '/users/login/'
+LOGIN_REDIRECT_URL = '/index.html' 
+LOGOUT_REDIRECT_URL = '/index.html'
