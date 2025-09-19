@@ -14,7 +14,7 @@ def login(request):
             user = auth.authenticate(username=username, password=password)
             if user:
                 auth.login(request,user)
-                return HttpResponseRedirect(reverse('index'))
+                return HttpResponseRedirect(reverse('lk:account'))
 
     else:
         form = UserLoginForm() 
@@ -22,9 +22,16 @@ def login(request):
     return render(request, 'users/pages/login.html', context)
 
 def registration(request):
-    form = UserRegistrationForm()
+    if request.method == 'POST':
+        form = UserRegistrationForm(data=request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('users:login'))
+    else:
+        form = UserRegistrationForm()
     context = {'form':form}
     return render(request, 'users/pages/registration.html', context)
+
 
 
 
