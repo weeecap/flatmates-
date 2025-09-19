@@ -1,0 +1,550 @@
+{% extends 'lk/base.html' %}
+{% load static %}
+
+{% block title %}Профиль - Flatmates Hub{% endblock %}
+
+{% block extra_css %}
+<style>
+:root {
+    --primary: #4361ee;
+    --primary-soft: #eef2ff;
+    --secondary: #6c757d;
+    --success: #198754;
+    --orange: #fd7e14;
+    --purple: #6f42c1;
+    --pink: #d63384;
+    --info: #0dcaf0;
+    --light-soft: #f8f9fa;
+    --dark: #212529;
+}
+
+.profile-container {
+    padding: 2rem 0;
+    min-height: 70vh;
+}
+
+.profile-card {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin-bottom: 2rem;
+}
+
+.profile-header {
+    background: linear-gradient(135deg, var(--primary) 0%, #3a56d4 100%);
+    color: white;
+    padding: 2.5rem 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.profile-header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+}
+
+.profile-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 4px solid white;
+    object-fit: cover;
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 2;
+}
+
+.profile-name {
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    position: relative;
+    z-index: 2;
+}
+
+.profile-role {
+    opacity: 0.9;
+    margin-bottom: 0;
+    position: relative;
+    z-index: 2;
+}
+
+.profile-body {
+    padding: 2rem;
+}
+
+.profile-section {
+    margin-bottom: 2rem;
+}
+
+.profile-section:last-child {
+    margin-bottom: 0;
+}
+
+.section-title {
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: var(--dark);
+    display: flex;
+    align-items: center;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--primary-soft);
+}
+
+.section-title i {
+    margin-right: 0.75rem;
+    color: var(--primary);
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.info-item {
+    display: flex;
+    align-items: flex-start;
+}
+
+.info-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1rem;
+    background-color: var(--primary-soft);
+    color: var(--primary);
+    flex-shrink: 0;
+}
+
+.info-content {
+    flex: 1;
+}
+
+.info-label {
+    font-weight: 500;
+    color: var(--secondary);
+    margin-bottom: 0.25rem;
+    font-size: 0.875rem;
+}
+
+.info-value {
+    font-weight: 600;
+    color: var(--dark);
+    margin-bottom: 0;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    border-left: 4px solid var(--primary);
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.stat-card.task {
+    border-left-color: var(--success);
+}
+
+.stat-card.expense {
+    border-left-color: var(--orange);
+}
+
+.stat-card.event {
+    border-left-color: var(--purple);
+}
+
+.stat-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    font-size: 1.5rem;
+}
+
+.stat-icon.primary {
+    background-color: var(--primary-soft);
+    color: var(--primary);
+}
+
+.stat-icon.success {
+    background-color: rgba(25, 135, 84, 0.1);
+    color: var(--success);
+}
+
+.stat-icon.orange {
+    background-color: rgba(253, 126, 20, 0.1);
+    color: var(--orange);
+}
+
+.stat-icon.purple {
+    background-color: rgba(111, 66, 193, 0.1);
+    color: var(--purple);
+}
+
+.stat-value {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+}
+
+.stat-label {
+    color: var(--secondary);
+    font-weight: 500;
+}
+
+.btn-edit {
+    background: linear-gradient(135deg, var(--primary) 0%, #3a56d4 100%);
+    border: none;
+    border-radius: 10px;
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    color: white;
+    display: inline-flex;
+    align-items: center;
+}
+
+.btn-edit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(67, 97, 238, 0.3);
+    color: white;
+}
+
+.btn-edit i {
+    margin-right: 0.5rem;
+}
+
+.flatmates-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.flatmate-item {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    border-radius: 10px;
+    margin-bottom: 0.75rem;
+    background-color: #f8f9fa;
+    transition: all 0.3s ease;
+}
+
+.flatmate-item:hover {
+    background-color: var(--primary-soft);
+    transform: translateX(5px);
+}
+
+.flatmate-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 1rem;
+    border: 2px solid white;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.flatmate-info {
+    flex: 1;
+}
+
+.flatmate-name {
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.flatmate-role {
+    font-size: 0.875rem;
+    color: var(--secondary);
+}
+
+.flatmate-status {
+    display: flex;
+    align-items: center;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.status-online {
+    color: var(--success);
+}
+
+.status-offline {
+    color: var(--secondary);
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: 0.5rem;
+}
+
+.status-online .status-dot {
+    background-color: var(--success);
+}
+
+.status-offline .status-dot {
+    background-color: var(--secondary);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .profile-header {
+        padding: 2rem 1.5rem;
+    }
+    
+    .profile-body {
+        padding: 1.5rem;
+    }
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="profile-container">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <div class="profile-card">
+                    <div class="profile-header">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                             alt="Анна" class="profile-avatar">
+                        <h2 class="profile-name">Анна Петрова</h2>
+                        <p class="profile-role">Участник с января 2023</p>
+                    </div>
+                    
+                    <div class="profile-body">
+                        <!-- Статистика -->
+                        <div class="profile-section">
+                            <h3 class="section-title">
+                                <i class="bi bi-graph-up"></i> Моя активность
+                            </h3>
+                            
+                            <div class="stats-grid">
+                                <div class="stat-card task">
+                                    <div class="stat-icon success">
+                                        <i class="bi bi-check-circle"></i>
+                                    </div>
+                                    <div class="stat-value">87%</div>
+                                    <div class="stat-label">Выполненные задачи</div>
+                                </div>
+                                
+                                <div class="stat-card expense">
+                                    <div class="stat-icon orange">
+                                        <i class="bi bi-currency-ruble"></i>
+                                    </div>
+                                    <div class="stat-value">24 560 ₽</div>
+                                    <div class="stat-label">Всего расходов</div>
+                                </div>
+                                
+                                <div class="stat-card event">
+                                    <div class="stat-icon purple">
+                                        <i class="bi bi-calendar-event"></i>
+                                    </div>
+                                    <div class="stat-value">12</div>
+                                    <div class="stat-label">Организовано событий</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Личная информация -->
+                        <div class="profile-section">
+                            <h3 class="section-title">
+                                <i class="bi bi-person"></i> Личная информация
+                            </h3>
+                            
+                            <div class="info-grid">
+                                <div class="info-item">
+                                    <div class="info-icon">
+                                        <i class="bi bi-envelope"></i>
+                                    </div>
+                                    <div class="info-content">
+                                        <div class="info-label">Email</div>
+                                        <div class="info-value">anna@example.com</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="info-item">
+                                    <div class="info-icon">
+                                        <i class="bi bi-telephone"></i>
+                                    </div>
+                                    <div class="info-content">
+                                        <div class="info-label">Телефон</div>
+                                        <div class="info-value">+7 (900) 123-45-67</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="info-item">
+                                    <div class="info-icon">
+                                        <i class="bi bi-calendar"></i>
+                                    </div>
+                                    <div class="info-content">
+                                        <div class="info-label">Дата рождения</div>
+                                        <div class="info-value">15 марта 1990</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="info-item">
+                                    <div class="info-icon">
+                                        <i class="bi bi-geo-alt"></i>
+                                    </div>
+                                    <div class="info-content">
+                                        <div class="info-label">Город</div>
+                                        <div class="info-value">Москва</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Информация о квартире -->
+                        <div class="profile-section">
+                            <h3 class="section-title">
+                                <i class="bi bi-house"></i> Моя квартира
+                            </h3>
+                            
+                            <div class="info-grid">
+                                <div class="info-item">
+                                    <div class="info-icon">
+                                        <i class="bi bi-building"></i>
+                                    </div>
+                                    <div class="info-content">
+                                        <div class="info-label">Адрес</div>
+                                        <div class="info-value">ул. Примерная, д. 15, кв. 42</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="info-item">
+                                    <div class="info-icon">
+                                        <i class="bi bi-people"></i>
+                                    </div>
+                                    <div class="info-content">
+                                        <div class="info-label">Количество соседей</div>
+                                        <div class="info-value">3 человека</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="info-item">
+                                    <div class="info-icon">
+                                        <i class="bi bi-calendar-check"></i>
+                                    </div>
+                                    <div class="info-content">
+                                        <div class="info-label">В квартире с</div>
+                                        <div class="info-value">15 января 2023</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Мои соседи -->
+                        <div class="profile-section">
+                            <h3 class="section-title">
+                                <i class="bi bi-people"></i> Мои соседи
+                            </h3>
+                            
+                            <ul class="flatmates-list">
+                                <li class="flatmate-item">
+                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                                         alt="Максим" class="flatmate-avatar">
+                                    <div class="flatmate-info">
+                                        <div class="flatmate-name">Максим Иванов</div>
+                                        <div class="flatmate-role">Сосед с февраля 2023</div>
+                                    </div>
+                                    <div class="flatmate-status status-online">
+                                        <span class="status-dot"></span> Online
+                                    </div>
+                                </li>
+                                
+                                <li class="flatmate-item">
+                                    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                                         alt="Ольга" class="flatmate-avatar">
+                                    <div class="flatmate-info">
+                                        <div class="flatmate-name">Ольга Сидорова</div>
+                                        <div class="flatmate-role">Соседка с января 2023</div>
+                                    </div>
+                                    <div class="flatmate-status status-offline">
+                                        <span class="status-dot"></span> Offline
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="text-center mt-4">
+                            <a href="{% url 'lk:profile' %}" class="btn btn-edit">
+                                <i class="bi bi-pencil"></i> Редактировать профиль
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Анимация появления элементов
+    const animateOnScroll = function() {
+        const elements = document.querySelectorAll('.stat-card, .info-item, .flatmate-item');
+        
+        elements.forEach(element => {
+            const position = element.getBoundingClientRect();
+            
+            if(position.top < window.innerHeight - 100) {
+                element.style.opacity = 1;
+                element.style.transform = 'translateY(0)';
+            }
+        });
+    };
+    
+    // Инициализация анимации
+    const elements = document.querySelectorAll('.stat-card, .info-item, .flatmate-item');
+    elements.forEach(element => {
+        element.style.opacity = 0;
+        element.style.transform = 'translateY(20px)';
+        element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    });
+    
+    window.addEventListener('scroll', animateOnScroll);
+    animateOnScroll(); // Запуск при загрузке
+});
+</script>
+{% endblock %}
