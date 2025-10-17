@@ -1,5 +1,5 @@
 from django import forms
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, UserChangeForm
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 
 from users.models import User
 
@@ -29,11 +29,15 @@ class UserRegistrationForm(UserCreationForm):
         model = User
         fields = ( 'username', 'email', 'password1', 'password2')
 
-class UserProfileForm(UserChangeForm):
-
+class UserCompleteProfileForm(forms.ModelForm):
+    tg = forms.CharField(widget=forms.TextInput({
+        'class':"form-control", 'label':'Telegram username'}))
+    date_of_birth = forms.DateField(widget=forms.DateInput({
+        'class':"form-control", 'type':'date', 'label':'Дата рождения'}))
     class Meta:
-        model = User 
-        fields = ('username', 'email', 'tg', 'image')
+        model = User
+        fields = ('tg', 'date_of_birth')
+
 
 
  

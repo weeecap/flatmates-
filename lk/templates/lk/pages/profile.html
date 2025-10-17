@@ -346,7 +346,7 @@
                     <div class="profile-header">
                         <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
                              alt="Анна" class="profile-avatar">
-                        <h2 class="profile-name">Анна Петрова</h2>
+                        <h2 class="profile-name">{{ user.get_full_name|default:user.username }}</h2>
                         <p class="profile-role">Участник с января 2023</p>
                     </div>
                     
@@ -397,17 +397,23 @@
                                     </div>
                                     <div class="info-content">
                                         <div class="info-label">Email</div>
-                                        <div class="info-value">anna@example.com</div>
+                                        <div class="info-value">{{ user.email }}</div>
                                     </div>
                                 </div>
                                 
                                 <div class="info-item">
                                     <div class="info-icon">
-                                        <i class="bi bi-telephone"></i>
+                                        <i class="bi bi-telegram"></i>
                                     </div>
                                     <div class="info-content">
-                                        <div class="info-label">Телефон</div>
-                                        <div class="info-value">+7 (900) 123-45-67</div>
+                                        <div class="info-label">Telegram</div>
+                                        <div class="info-value">
+                                            {% if user.tg %}
+                                                @{{ user.tg }}
+                                            {% else %}
+                                                Не указан
+                                            {% endif %}
+                                        </div>
                                     </div>
                                 </div>
                                 
@@ -417,17 +423,13 @@
                                     </div>
                                     <div class="info-content">
                                         <div class="info-label">Дата рождения</div>
-                                        <div class="info-value">15 марта 1990</div>
-                                    </div>
-                                </div>
-                                
-                                <div class="info-item">
-                                    <div class="info-icon">
-                                        <i class="bi bi-geo-alt"></i>
-                                    </div>
-                                    <div class="info-content">
-                                        <div class="info-label">Город</div>
-                                        <div class="info-value">Москва</div>
+                                        <div class="info-value">
+                                            {% if user.date_of_birth %}
+                                                @{{ user.date_of_birth}}
+                                            {% else %}
+                                                Не указана
+                                            {% endif %}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
